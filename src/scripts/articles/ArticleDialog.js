@@ -42,15 +42,15 @@ export const ArticleDialog = () => {
     contentTarget.innerHTML = `
         <dialog id="article">
             <fieldset>
-                <label class="label--notes" for="title">News Title: </label>
+                <label class="label--title" for="title">News Title: </label>
                 <input type="text" id="title"/>
             </fieldset>
             <fieldset>
-                <label class="label label--notes" for="synopsis">Synopsis: </label>
+                <label class="label label--synopsis" for="synopsis">Synopsis: </label>
                 <textarea id="synopsis"></textarea>
             </fieldset>
             <fieldset>
-                <label class="label label--notes" for="url">URL: </label>
+                <label class="label--url" for="url">URL: </label>
                 <input type="text" id="url"/>
             </fieldset>
             <button id="saveArticle">Save Article</button>
