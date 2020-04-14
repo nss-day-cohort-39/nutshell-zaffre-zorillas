@@ -1,3 +1,8 @@
+/*
+    Author: Kristen Howton
+    Module Purpose: HTML representation of an article
+*/
+
 export const Article = articleObject => {
     return `
         <article class="article">
