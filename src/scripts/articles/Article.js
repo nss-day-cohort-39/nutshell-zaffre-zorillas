@@ -1,6 +1,6 @@
 /*
     Author: Kristen Howton
-    Module Purpose: HTML representation of an article
+    Module Purpose: HTML representation of a single article form dialog
 */
 
 export const Article = articleObject => {

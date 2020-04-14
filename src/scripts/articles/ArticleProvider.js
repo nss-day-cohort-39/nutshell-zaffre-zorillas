@@ -16,7 +16,7 @@ export const useArticles = () => articles.slice()
 
 export const getArticles = () => fetch("http://localhost:3000/news")
     .then(response => response.json())
-    .then(parsedArticles => articles = parsedArticles)
+    .then(parsedArticles => articles = parsedArticles.reverse())
 
 export const deleteArticle = articleId => {
     return fetch(`http://localhost:3000/news/${articleId}`, {

@@ -1,6 +1,6 @@
 /*
     Author: Kristen Howton
-    Module Purpose: Dialog for Articles
+    Module Purpose: Rendering HTML representation of an Articles
 */
 
 import { saveArticle } from "./ArticleProvider.js"
@@ -57,3 +57,6 @@ export const ArticleDialog = () => {
         </dialog>
     `
 }
+
+
+

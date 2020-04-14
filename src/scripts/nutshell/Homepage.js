@@ -4,5 +4,4 @@ import { ArticleDialog } from "../articles/ArticleDialog.js"
 
 getArticles
     .then(ArticleList)
-
-ArticleDialog()
+    .then(ArticleDialog)
