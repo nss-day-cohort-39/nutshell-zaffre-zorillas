@@ -1,17 +1,15 @@
 // Module Purpose: Renders news, events, tasks, messages, and friends for logged in user
 // Authors: Sarah Landolt, Derek Buckley, Crystal Elsey, Kristen Howton
 
-import "./Homepage.js"
 import { WelcomeMessage } from "./WelcomeMessage.js"
 import { RegistrationForm } from "./RegistrationForm.js"
 import { SignInForm } from "./SignInForm.js"
+import { renderHomepage } from "./Homepage.js"
 
 
 const eventHub = document.querySelector(".container")
 
-
-
-    WelcomeMessage()
+WelcomeMessage()
 
 const contentTarget = document.querySelector(".nutshellContainer")
 
@@ -19,11 +17,29 @@ eventHub.addEventListener("registerButtonClicked", event => {
     contentTarget.innerHTML = ""
      const registrationFormHTML= RegistrationForm()
      contentTarget.innerHTML = registrationFormHTML
-
+     
 })
 
 eventHub.addEventListener("signInButtonClicked", event => {
     contentTarget.innerHTML = ""
      const signInFormHTML= SignInForm()
      contentTarget.innerHTML = signInFormHTML
+})
+
+contentTarget.addEventListener("click", clickEvent => {
+    
+    // Make sure it was one of the itinerary buttons
+    if (clickEvent.target.id === "userSignInButton") {
+       
+        const username = document.querySelector("#username").value
+        contentTarget.innerHTML =""
+        /*
+            Create a new custom event, with a good name, and
+            add a property to the `detail` object that specifies
+            which itinerary was chosen
+        */
+   
+       sessionStorage.setItem('user', username)
+       renderHomepage()
+    }
 })

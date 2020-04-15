@@ -42,12 +42,6 @@ contentTarget.addEventListener("click", clickEvent => {
 
         if (username !== "" && email !== "" && password !== "" && password === confirmPassword){
             const allUsers = useUsers()
-            // let foundUser = {}
-            // foundUser = allUsers.find(
-            //     (user) => {
-            //         return user.email === email
-            //     })
-            //     foundUser.email === email
                     if (allUsers.find((user)=>user.email ===email)){
                         alert("This email is already registered")
                     }

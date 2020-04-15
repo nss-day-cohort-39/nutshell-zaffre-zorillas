@@ -1,6 +1,6 @@
 // Module purpose: render the SignInForm HTML
 // Author(s): Derek Buckley & Sarah Landolt
-
+const contentTarget = document.querySelector(".nutshellContainer")
 
 export const SignInForm = () => {
     return `
@@ -12,9 +12,10 @@ export const SignInForm = () => {
             <label for="password">Password</label>
             <input type="text" id="password">
         </fieldset>
-        <button class= "button" id="signInButton">Login</button>
+        <button class= "button" id="userSignInButton">Login</button>
     `
 }
+
 
 
 
