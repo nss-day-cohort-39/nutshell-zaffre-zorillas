@@ -1,9 +1,7 @@
-/* author(s)
-  purpose of module
- */
+// Module Purpose: Renders news, events, tasks, messages, and friends for logged in user
+// Authors: Sarah Landolt, Derek Buckley, Crystal Elsey, Kristen Howton
 
-
-
+import "./Homepage.js"
 import { WelcomeMessage } from "./WelcomeMessage.js"
 import { RegistrationForm } from "./RegistrationForm.js"
 import { SignInForm } from "./SignInForm.js"
