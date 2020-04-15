@@ -1,4 +1,4 @@
-//Module Purpose: HTML representation of a single article     
+//Module Purpose: HTML representation of a single article with a delete button     
 //Author: Kristen Howton
 
 export const Article = articleObject => {
@@ -8,6 +8,7 @@ export const Article = articleObject => {
             <section>Synopsis: ${articleObject.synopsis}</section>
             <section>URL: ${articleObject.url}</section>
             <section>Date: ${articleObject.date}</section>
+            <button id="deleteArticleButton">Delete</button>
         </article>
     `
 }
