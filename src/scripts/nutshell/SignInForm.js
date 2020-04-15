@@ -1,5 +1,3 @@
-
-
 export const SignInForm = () => {
     return `
         <fieldset>
