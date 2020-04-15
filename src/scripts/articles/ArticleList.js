@@ -1,66 +1,47 @@
 /*
     Author: Kristen Howton
-    Module Purpose: Rendering HTML representations of Articles
+    Module Purpose: Having articles display on the DOM
 */
 
-import { saveArticle } from "./ArticleProvider.js"
+import { Article } from "./Article.js"
+import { useArticles } from "./ArticleProvider.js"
 
 const contentTarget = document.querySelector(".articlesContainer")
 const eventHub = document.querySelector(".container")
 
-//Factory function that returns the objects
-const articleFactory = (title, synopsis, url, userId) => {
-    return {
-        title: title,
-        synopsis: synopsis,
-        date: Date.now(),
-        url: url,
-        userId: userId,
-    }
+//Eventlistener for event that comes from ArticleProvider.js and lets this module know that the article state changed
+eventHub.addEventListener("articleStateChanged", Event => {
+    ArticleList()
+})
+
+//Defining a custom event that will let ArticleDialog.js know that the article button was clicked
+const dispatchArticleButtonClicked = () => {
+    const articleButtonClicked = new CustomEvent("newArticleClicked")
+    eventHub.dispatchEvent(articleButtonClicked)
 }
 
-//Event listener that is listening for the custom event that was defined in ArticleList.js
-eventHub.addEventListener("newArticleClicked", customEvent => {
-    const articleDialog = document.querySelector("#article")
-    articleDialog.showModal()
-})
-
-//Defining a click event for the save article and article will save to the database 
 contentTarget.addEventListener("click", event => {
-    if(event.target.id === "saveArticle") {
-        const title = document.querySelector("#title").value
-        const synopsis = document.querySelector("#synopsis").value
-        const url = document.querySelector("#url").value
-        const userId = 0 // Somehow get the userId
-        const articleDialog = document.querySelector("#article")
-        const newArticle = articleFactory(title, synopsis, url, userId)
-        
-        saveArticle(newArticle)
-        //Method that closes form dialog
-        articleDialog.close()
+    if(event.target.id === "newArticleButton"){
+        dispatchArticleButtonClicked()
     }
 })
 
-//HTML representatin of a form that is nested in a dialog
-export const ArticleDialog = () => {
-    contentTarget.innerHTML = `
-        <dialog id="article">
-            <fieldset>
-                <label class="label--title" for="title">News Title: </label>
-                <input type="text" id="title"/>
-            </fieldset>
-            <fieldset>
-                <label class="label--synopsis" for="synopsis">Synopsis: </label>
-                <textarea id="synopsis"></textarea>
-            </fieldset>
-            <fieldset>
-                <label class="label--url" for="url">URL: </label>
-                <input type="text" id="url"/>
-            </fieldset>
-            <button id="saveArticle">Save Article</button>
-        </dialog>
+//Display an array of article objects on the DOM
+const renderArticles = articlesToRender => {
+    contentTarget.innerHTML = ` 
+        <button id="newArticleButton">New Article</button>
+        ${
+            articlesToRender.map(
+                articleToRender => {
+                    return Article(articleToRender)
+                }
+            ).join("")
+        }
     `
 }
 
-
-
+//Gets the articles and uses renderArticles to display on DOM
+export const ArticleList = () => {
+    const allArticles = useArticles()
+    renderArticles(allArticles)
+}

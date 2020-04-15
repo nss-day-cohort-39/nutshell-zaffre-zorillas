@@ -31,9 +31,12 @@ contentTarget.addEventListener("click", event => {
         const title = document.querySelector("#title").value
         document.querySelector("#title").value = ""
         const synopsis = document.querySelector("#synopsis").value
+        document.querySelector("#synopsis").value = ""
         const url = document.querySelector("#url").value
+        document.querySelector("#url").value = ""
         const userId = 0 // Somehow get the userId
         const articleDialog = document.querySelector("#article")
+        document.querySelector("#article") = ""
         const newArticle = articleFactory(title, synopsis, url, userId)
         
         saveArticle(newArticle)
