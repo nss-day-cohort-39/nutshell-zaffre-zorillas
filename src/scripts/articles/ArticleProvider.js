@@ -24,7 +24,7 @@ export const deleteArticle = articleId => {
     return fetch(`http://localhost:3000/news/${articleId}`, {
         method: "DELETE"
     })
-        .then(getNews)
+        .then(getArticles)
         .then(dispatchStateChangeEvent)
 }
 
