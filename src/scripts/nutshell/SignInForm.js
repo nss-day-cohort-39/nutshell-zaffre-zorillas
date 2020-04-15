@@ -1,4 +1,4 @@
-// Module purpose: render the registration form and handle the information
+// Module purpose: render the SignInForm HTML
 // Author(s): Derek Buckley & Sarah Landolt
 
 

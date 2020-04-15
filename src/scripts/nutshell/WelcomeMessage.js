@@ -1,3 +1,5 @@
+// Module purpose: render the Welcome Message HTML
+// Author(s): Derek Buckley & Sarah Landolt
 
 const contentTarget = document.querySelector(".nutshellContainer")
 const eventHub = document.querySelector(".container")
