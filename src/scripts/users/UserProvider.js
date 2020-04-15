@@ -1,3 +1,5 @@
+//Module purpose: To handle fetching user data and posting user data to API | Author(s): Derek Buckley Sarah Landolt
+
 let users = []
 
 export const useUsers = () => {

@@ -1,3 +1,5 @@
+// Module purpose: render the registration form and handle the information
+// Author(s): Derek Buckley & Sarah Landolt
 
 
 export const SignInForm = () => {

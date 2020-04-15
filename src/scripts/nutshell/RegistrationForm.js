@@ -1,3 +1,6 @@
+//Module purpose: render the registration form and handle the information | author(s): Derek Buckley Sarah Landolt
+ 
+
 import { saveUser } from "../users/UserProvider.js"
 
 const contentTarget = document.querySelector(".nutshellContainer")
