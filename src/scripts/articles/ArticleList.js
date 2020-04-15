@@ -7,11 +7,6 @@ import { useArticles, deleteArticle } from "./ArticleProvider.js"
 const contentTarget = document.querySelector(".articlesContainer")
 const eventHub = document.querySelector(".container")
 
-//Eventlistener for event that comes from ArticleProvider.js and lets this module know that the article state changed
-eventHub.addEventListener("articleStateChanged", Event => {
-    ArticleList()
-})
-
 //Defining a custom event that will let ArticleDialog.js know that the article button was clicked
 const dispatchArticleButtonClicked = () => {
     const articleButtonClicked = new CustomEvent("newArticleClicked")
@@ -44,6 +39,11 @@ contentTarget.addEventListener("click", clickEvent => {
         const [prefix, articleId] = clickEvent.target.id.split('--')
         deleteArticle(articleId)
     }
+})
+
+//Eventlistener for event that comes from ArticleProvider.js and lets this module know that the article state changed
+eventHub.addEventListener("articleStateChanged", Event => {
+    ArticleList()
 })
 
 //Gets the articles and uses renderArticles to display on DOM
