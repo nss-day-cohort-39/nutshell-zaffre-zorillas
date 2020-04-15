@@ -8,9 +8,8 @@ import { ArticleList } from "../articles/ArticleList.js"
 import { getArticles } from "../articles/ArticleProvider.js"
 import { ArticleDialog } from "../articles/ArticleDialog.js"
 
-getUsers()
-    .then(getEvents)
-    .then(EventList)
+getEvents()
+    .then(EventList)  
 
 getArticles()
     .then(ArticleDialog)
