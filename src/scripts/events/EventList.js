@@ -1,4 +1,4 @@
-// Module Responsibility: Render a list of upcoming events by user
+// Module Purpose: Render a list of the logged in user's upcoming events
 // Author: Crystal Elsey
 
 import { useEvents } from "./EventProvider.js"

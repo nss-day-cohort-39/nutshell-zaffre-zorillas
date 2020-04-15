@@ -1,4 +1,4 @@
-// Module Responsibility: Return a string representation of an event object 
+// Module Purpose: Return a string representation of an event object 
 // Author: Crystal Elsey 
 
 export const Event = (event) => {

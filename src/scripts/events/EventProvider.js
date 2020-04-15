@@ -1,4 +1,4 @@
-// Module Responsibility: Fetch events data from server & export copy of events data array
+// Module Purpose: Fetch events data from server & export copy of events data array
 // Author: Crystal Elsey
 
 let events = []
