@@ -1,8 +1,4 @@
-/* author(s)
-  purpose of module
- */
-
-
+import "./Homepage.js"
 
 import { WelcomeMessage } from "./WelcomeMessage.js"
 import { RegistrationForm } from "./RegistrationForm.js"

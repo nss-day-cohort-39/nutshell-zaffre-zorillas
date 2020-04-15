@@ -1,0 +1,7 @@
+import { ArticleList } from "../articles/ArticleList.js"
+import { getArticles } from "../articles/ArticleProvider.js"
+import { ArticleDialog } from "../articles/ArticleDialog.js"
+
+getArticles()
+    .then(ArticleDialog)
+    .then(ArticleList)
