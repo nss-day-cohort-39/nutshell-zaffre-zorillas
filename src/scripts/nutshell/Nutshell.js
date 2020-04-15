@@ -1,9 +1,4 @@
 import "./Homepage.js"
-/* author(s)
-  purpose of module
- */
-
-
 
 import { WelcomeMessage } from "./WelcomeMessage.js"
 import { RegistrationForm } from "./RegistrationForm.js"

@@ -1,7 +1,5 @@
-/*
-    Author: Kristen Howton
-    Module Purpose: Rendering HTML representations of Articles
-*/
+//Module Purpose: Rendering HTML representations of Articles
+//Author: Kristen Howton
 
 import { saveArticle } from "./ArticleProvider.js"
 

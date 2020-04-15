@@ -1,7 +1,5 @@
-/*
-    Author: Kristen Howton
-    Module Purpose: Having articles display on the DOM
-*/
+//Module Purpose: Having articles display on the DOM
+//Author: Kristen Howton
 
 import { Article } from "./Article.js"
 import { useArticles } from "./ArticleProvider.js"

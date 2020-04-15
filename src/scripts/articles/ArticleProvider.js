@@ -1,7 +1,5 @@
-/*
-    Author: Kristen Howton
-    Module Purpose: Fetching articles, saving articles, and deleting articles from the database.json
-*/
+//Module Purpose: Fetching articles, saving articles, and deleting articles from the database.json
+//Author: Kristen Howton 
 
 let articles = []
 
