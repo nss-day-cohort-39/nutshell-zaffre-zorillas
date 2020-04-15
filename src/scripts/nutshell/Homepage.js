@@ -9,7 +9,7 @@ import { getArticles } from "../articles/ArticleProvider.js"
 import { ArticleDialog } from "../articles/ArticleDialog.js"
 
 getEvents()
-    .then(EventList)  
+    .then(EventList)
 
 getArticles()
     .then(ArticleDialog)

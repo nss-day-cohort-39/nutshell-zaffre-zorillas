@@ -6,8 +6,8 @@ export const Event = (event) => {
         <div class="event">
             <h3>Upcoming Event: ${event.name}</h3>
             <p>Date: ${event.date}</p>
-            <p>Location: ${event.location}</p>
-            <p><button id="deleteEventBtn--${event.id}">Delete</button></p>            
+            <p>Location: ${event.location}</p>    
+            <p><button id="deleteEventBtn--${event.id}">Delete</button></p>        
         </div>
     `
 }
