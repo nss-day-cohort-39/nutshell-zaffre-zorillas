@@ -1,7 +1,6 @@
 //Module Purpose: HTML representation of a single article     
 //Author: Kristen Howton
 
-
 export const Article = articleObject => {
     return `
         <article class="article">
