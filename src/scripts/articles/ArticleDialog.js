@@ -1,14 +1,15 @@
 /*
     Author: Kristen Howton
-    Module Purpose: Rendering HTML representation of an Articles
+    Module Purpose: Rendering HTML representations of Articles
 */
 
 import { saveArticle } from "./ArticleProvider.js"
 
-const contentTarget = document.querySelector(".articlesContainer")
+const contentTarget = document.querySelector(".dialogsContainer")
 const eventHub = document.querySelector(".container")
 
-const articleFactory = (userId, title, synopsis, url) => {
+//Factory function that returns the objects
+const articleFactory = (title, synopsis, url, userId) => {
     return {
         title: title,
         synopsis: synopsis,
@@ -18,26 +19,30 @@ const articleFactory = (userId, title, synopsis, url) => {
     }
 }
 
+//Event listener that is listening for the custom event that was defined in ArticleList.js
 eventHub.addEventListener("newArticleClicked", customEvent => {
     const articleDialog = document.querySelector("#article")
     articleDialog.showModal()
 })
 
+//Defining a click event for the save article and article will save to the database 
 contentTarget.addEventListener("click", event => {
     if(event.target.id === "saveArticle") {
-        const userId = 0 // Somehow get the userId
-        const articleDialog = document.querySelector("#article")
-        const newsTitle = document.querySelector("#title").value
+        const title = document.querySelector("#title").value
+        document.querySelector("#title").value = ""
         const synopsis = document.querySelector("#synopsis").value
         const url = document.querySelector("#url").value
-        const newArticle = articleFactory(userId, newsTitle, synopsis, url)
+        const userId = 0 // Somehow get the userId
+        const articleDialog = document.querySelector("#article")
+        const newArticle = articleFactory(title, synopsis, url, userId)
         
         saveArticle(newArticle)
-
+        //Method that closes form dialog
         articleDialog.close()
     }
 })
 
+//HTML representatin of a form that is nested in a dialog
 export const ArticleDialog = () => {
     contentTarget.innerHTML = `
         <dialog id="article">
@@ -46,7 +51,7 @@ export const ArticleDialog = () => {
                 <input type="text" id="title"/>
             </fieldset>
             <fieldset>
-                <label class="label label--synopsis" for="synopsis">Synopsis: </label>
+                <label class="label--synopsis" for="synopsis">Synopsis: </label>
                 <textarea id="synopsis"></textarea>
             </fieldset>
             <fieldset>
