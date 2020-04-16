@@ -2,15 +2,10 @@
 //Author: Kristen Howton
 
 import { Article } from "./Article.js"
-import { useArticles } from "./ArticleProvider.js"
+import { useArticles, deleteArticle } from "./ArticleProvider.js"
 
 const contentTarget = document.querySelector(".articlesContainer")
 const eventHub = document.querySelector(".container")
-
-//Eventlistener for event that comes from ArticleProvider.js and lets this module know that the article state changed
-eventHub.addEventListener("articleStateChanged", Event => {
-    ArticleList()
-})
 
 //Defining a custom event that will let ArticleDialog.js know that the article button was clicked
 const dispatchArticleButtonClicked = () => {
@@ -38,8 +33,22 @@ const renderArticles = articlesToRender => {
     `
 }
 
+//Allow user to delete an article
+contentTarget.addEventListener("click", clickEvent => {
+    if(clickEvent.target.id.startsWith("deleteArticleBtn--")) {
+        const [prefix, articleId] = clickEvent.target.id.split('--')
+        deleteArticle(articleId)
+    }
+})
+
+//Eventlistener for event that comes from ArticleProvider.js and lets this module know that the article state changed
+eventHub.addEventListener("articleStateChanged", Event => {
+    ArticleList()
+})
+
 //Gets the articles and uses renderArticles to display on DOM
 export const ArticleList = () => {
     const allArticles = useArticles()
     renderArticles(allArticles)
 }
+
