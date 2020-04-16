@@ -8,6 +8,9 @@ import { getEvents } from "../events/EventProvider.js"
 import { EventDialog } from "../events/EventDialog.js"
 import { getUsers, useUsers } from "../users/UserProvider.js"
 import { EventList } from "../events/EventList.js"
+import { getTasks } from "../tasks/TaskProvider.js"
+import { TaskList } from "../tasks/TaskList.js"
+import { TaskDialog } from "../tasks/TaskDialog.js"
 
 
 export const renderHomepage = () => {
@@ -20,4 +23,8 @@ getUsers()
 getArticles()
     .then(ArticleDialog)
     .then(ArticleList)
+
+getTasks()
+    .then(TaskList)
+    .then(TaskDialog)
 }
