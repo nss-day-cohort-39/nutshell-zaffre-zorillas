@@ -7,7 +7,7 @@ export const useUsers = () => {
 }
 
 export const getUsers = () => {
-    return fetch("http://localhost:3000/users")
+    return fetch('http://localhost:3000/users')
       .then(response => response.json())
       .then(parsedUsers => {
         users = parsedUsers;

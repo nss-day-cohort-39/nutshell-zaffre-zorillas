@@ -1,7 +1,6 @@
 //Module purpose: render the registration form and handle the information | author(s): Derek Buckley Sarah Landolt
- 
 
-import { saveUser, useUsers } from "../users/UserProvider.js"
+import { saveUser, useUsers, getUsers } from "../users/UserProvider.js"
 
 const contentTarget = document.querySelector(".nutshellContainer")
 export const RegistrationForm = () => {
@@ -41,8 +40,9 @@ contentTarget.addEventListener("click", clickEvent => {
         }
 
         if (username !== "" && email !== "" && password !== "" && password === confirmPassword){
-            const allUsers = useUsers()
-                    if (allUsers.find((user)=>user.email ===email)){
+            
+            const allUsers= getUsers().then(useUsers) 
+            if (allUsers.find((user)=>user.email ===email)){
                         alert("This email is already registered")
                     }
                     else {

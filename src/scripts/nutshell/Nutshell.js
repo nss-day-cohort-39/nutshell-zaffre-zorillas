@@ -5,10 +5,10 @@ import { WelcomeMessage } from "./WelcomeMessage.js"
 import { RegistrationForm } from "./RegistrationForm.js"
 import { SignInForm } from "./SignInForm.js"
 import { renderHomepage } from "./Homepage.js"
+import { useUsers } from "../users/UserProvider.js"
 
 
 const eventHub = document.querySelector(".container")
-
 WelcomeMessage()
 
 const contentTarget = document.querySelector(".nutshellContainer")
@@ -27,7 +27,6 @@ eventHub.addEventListener("signInButtonClicked", event => {
 })
 
 contentTarget.addEventListener("click", clickEvent => {
-    
     // Make sure it was one of the itinerary buttons
     if (clickEvent.target.id === "userSignInButton") {
        
@@ -35,10 +34,11 @@ contentTarget.addEventListener("click", clickEvent => {
         contentTarget.innerHTML =""
         /*
             Create a new custom event, with a good name, and
-            add a property to the `detail` object that specifies
+            add a property to the `detail` object that specifie
             which itinerary was chosen
         */
-   
+       const userArray = useUsers()
+       const activeUser = userArray.find((user)=>user.username ===username)
        sessionStorage.setItem('user', username)
        renderHomepage()
     }
