@@ -7,29 +7,42 @@ import { Event } from "./Event.js"
 const contentTarget = document.querySelector(".eventsContainer")
 const eventHub = document.querySelector(".container")
 
+// Renders HTML for "New Event" button & list of the logged in user's events
 const renderEvents = (allEvents) => {
-    const user = 1
-    const eventsForThisUser = allEvents.filter(event => {
-        return user === event.userId
-    })
-    const eventsHTML = eventsForThisUser.map(event => {
-        return Event(event)
-    }).join("")
-    contentTarget.innerHTML = eventsHTML
+    contentTarget.innerHTML = `
+        <div><button id="newEventBtn">New Event</button></div>
+        <div class="events__list">
+            ${allEvents.map(eachEvent => {
+                return Event(eachEvent)
+            }).join("")} 
+        </div>`
 }
 
+// Listens for the user to click on a "delete event" button:
 contentTarget.addEventListener("click", clickEvent => {
     if (clickEvent.target.id.startsWith("deleteEventBtn--")) {
+        // Splits the button ID, and stores the ID in a new variable:
         const [prefix, eventID] = clickEvent.target.id.split("--")
+        // Deletes the event whose ID corresponds with the ID of the button clicked:
         deleteEvent(eventID)
     }
 })
 
-eventHub.addEventListener("eventListStateChanged", customEvent => {
-    EventList()
+// Creates, listens for, and dispatches custom event and calls the function to dispatch it:
+contentTarget.addEventListener("click", clickEvent => {
+    if (clickEvent.target.id === "newEventBtn") {
+        const newEventBtnClickedEvent = new CustomEvent("newEventBtnClicked")
+        eventHub.dispatchEvent(newEventBtnClickedEvent)
+    }
 })
 
+// Exports a function that renders the Event List for use by other modules: 
 export const EventList = () => {
     const events = useEvents()
     renderEvents(events)
 }
+
+// Re-renders the Event List anytime the state of the Event List is changed:
+eventHub.addEventListener("eventListStateChanged", customEvent => {
+    EventList()
+})

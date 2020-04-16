@@ -51,7 +51,7 @@ contentTarget.addEventListener("click", event => {
 
 //HTML representatin of a form that is nested in a dialog
 export const ArticleDialog = () => {
-    contentTarget.innerHTML = `
+    contentTarget.innerHTML += `
         <dialog id="article">
             <fieldset>
                 <label class="label--title" for="title">News Title: </label>
