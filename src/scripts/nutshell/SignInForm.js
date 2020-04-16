@@ -11,11 +11,3 @@ export const SignInForm = () => {
         <button class= "button" id="signInButton">Login</button>
     `
 }
-
-
-
-
-
-
-
-
