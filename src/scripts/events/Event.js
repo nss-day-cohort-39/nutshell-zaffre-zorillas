@@ -4,7 +4,9 @@
 import { useEvents } from "./EventProvider.js"
 
 export const Event = (event) => {
+    // Stores copy of events array sorted by date in ascending order 
     const events = useEvents()
+    // Adds a class of "nextEvent" to the first object in the array to be edited in CSS
     if (event === events[0]) {
     return `
         <div class="nextEvent">

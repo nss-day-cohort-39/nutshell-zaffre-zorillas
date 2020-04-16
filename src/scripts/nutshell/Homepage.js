@@ -9,15 +9,13 @@ import { EventDialog } from "../events/EventDialog.js"
 import { getUsers, useUsers } from "../users/UserProvider.js"
 import { EventList } from "../events/EventList.js"
 
-
 export const renderHomepage = () => {
-getUsers()
-    .then(useUsers)
-    .then(getEvents)
-    .then(EventList)
-    .then(EventDialog)
-
-getArticles()
-    .then(ArticleDialog)
-    .then(ArticleList)
-}
+    getUsers()
+        .then(useUsers)
+        .then(getEvents)
+        .then(EventList)
+        .then(EventDialog)
+        .then(getArticles)
+        .then(ArticleDialog)
+        .then(ArticleList)
+    }
