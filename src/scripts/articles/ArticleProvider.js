@@ -11,8 +11,14 @@ const dispatchStateChangeEvent = () => {
     eventHub.dispatchEvent(articleStateChangedEvent)
 }
 
-//Returns a copy of the article objects
-export const useArticles = () => articles.slice()
+//Returns a copy of the article objects that are sorted in decending order by date
+export const useArticles = () => {
+    const sortedByDateDecendingOrder = articles.sort(
+        (newerArticle, olderArticle) =>
+            Date.parse(newerArticle.date) - Date.parse(olderArticle.date)
+    )
+    return sortedByDateDecendingOrder.slice()
+}
 
 //Fetching articles
 export const getArticles = () => fetch("http://localhost:3000/news")
