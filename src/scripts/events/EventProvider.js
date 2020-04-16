@@ -10,8 +10,8 @@ export const getEvents = () => fetch("http://localhost:3000/events")
     .then(response => response.json())
     .then(parsedEvents => events = parsedEvents)
 
-// Exports a copy of the events array:
-export const useEvents = () => events.slice()
+// Exports a copy of the events array sorted by date:
+export const useEvents = () => events.slice().sort((next, last) => Date.parse(next.date) - Date.parse(last.date))
 
 // Dispatches a custom event notifying the eventHub anytime the Event List changes:
 const eventListStateChange = () => {
@@ -28,6 +28,7 @@ export const deleteEvent = (eventID) => {
     .then(eventListStateChange)
 }
 
+// Posts saved event to fetched events data and lets EH know the Event List state has changed 
 export const saveEvent = (event) => {
     return fetch("http://localhost:3000/events", {
         method: "POST",
