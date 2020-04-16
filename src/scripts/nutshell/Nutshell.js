@@ -37,3 +37,7 @@ eventHub.addEventListener("userSignedIn", event => {
     contentTarget.innerHTML = ""
     renderHomepage()
 })
+
+eventHub.addEventListener("dialogClosed", event => {
+    renderHomepage()
+})
