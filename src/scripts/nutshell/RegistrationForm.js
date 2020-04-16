@@ -72,11 +72,5 @@ contentTarget.addEventListener("click", clickEvent => {
             alert("One or more fields was completed incorrectly. Confirm that all fields are completed correctly and passwords match.");
 
         }
-
-
-
-    //    const userArray = useUsers()
-    //    const activeUser = userArray.find((user)=>user.username ===username)
-
     }
 })
