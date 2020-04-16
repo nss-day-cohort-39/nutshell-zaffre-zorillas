@@ -21,16 +21,19 @@ contentTarget.addEventListener("click", event => {
 
 //Display an array of article objects on the DOM
 const renderArticles = articlesToRender => {
+    let activeUser = parseInt(sessionStorage.getItem("user"))
+    const articlesForThisUser = articlesToRender.filter(article => {
+        return activeUser = article.userId 
+    })
     contentTarget.innerHTML = ` 
-        <button id="newArticleButton">New Article</button>
-        ${
-            articlesToRender.map(
-                articleToRender => {
-                    return Article(articleToRender)
-                }
-            ).join("")
-        }
-    `
+        <div><button id="newArticleButton">New Article</button></div>
+        <div class="articles__list">
+            ${articlesForThisUser.map(
+                    articleForThisUser => {
+                        return Article(articleForThisUser)
+                    }
+                ).join("")}
+        </div>`
 }
 
 //Allow user to delete an article
