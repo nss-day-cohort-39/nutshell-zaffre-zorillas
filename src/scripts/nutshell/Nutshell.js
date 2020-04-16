@@ -5,8 +5,10 @@ import { WelcomeMessage } from "./WelcomeMessage.js"
 import { RegistrationForm } from "./RegistrationForm.js"
 import { SignInForm } from "./SignInForm.js"
 import { renderHomepage } from "./Homepage.js"
-import { useUsers } from "../users/UserProvider.js"
+import { useUsers, getUsers } from "../users/UserProvider.js"
 
+
+getUsers()
 
 const eventHub = document.querySelector(".container")
 WelcomeMessage()
@@ -17,7 +19,7 @@ eventHub.addEventListener("registerButtonClicked", event => {
     contentTarget.innerHTML = ""
      const registrationFormHTML= RegistrationForm()
      contentTarget.innerHTML = registrationFormHTML
-     
+
 })
 
 eventHub.addEventListener("signInButtonClicked", event => {
@@ -29,7 +31,7 @@ eventHub.addEventListener("signInButtonClicked", event => {
 contentTarget.addEventListener("click", clickEvent => {
     // Make sure it was one of the itinerary buttons
     if (clickEvent.target.id === "userSignInButton") {
-       
+
         const username = document.querySelector("#username").value
         contentTarget.innerHTML =""
         /*
@@ -39,7 +41,11 @@ contentTarget.addEventListener("click", clickEvent => {
         */
        const userArray = useUsers()
        const activeUser = userArray.find((user)=>user.username ===username)
-       sessionStorage.setItem('user', username)
+       sessionStorage.setItem('user', activeUser.id)
        renderHomepage()
     }
+})
+eventHub.addEventListener("userRegistered", event => {
+    contentTarget.innerHTML = ""
+    renderHomepage()
 })

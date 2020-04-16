@@ -13,7 +13,7 @@ export const getUsers = () => {
         users = parsedUsers;
       })
   }
-  
+
   export const saveUser = user => {
     return fetch('http://localhost:3000/users', {
     method: "POST",
@@ -22,5 +22,6 @@ export const getUsers = () => {
     },
     body: JSON.stringify(user)
 })
+.then(response => response.json())
 
 }
