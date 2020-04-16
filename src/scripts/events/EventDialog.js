@@ -43,8 +43,14 @@ contentTarget.addEventListener("click", clickEvent => {
         const newEvent = {
                 date: eventDate,
                 name: eventName,
-                location: eventLocation
+                location: eventLocation,
+                userId: parseInt(sessionStorage.getItem("user"))
             }
+        if (newEvent.name !== "" && newEvent.location !== "" && newEvent.date !== "") {
+            saveEvent(newEvent)
+        } else {
+            alert("Please complete all fields before saving.")
+        }
         eventDialog.close()
     }  
 })

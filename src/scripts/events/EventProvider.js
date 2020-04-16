@@ -12,8 +12,6 @@ export const getEvents = () => fetch("http://localhost:3000/events")
 
 // Exports a copy of the events array sorted by date:
 export const useEvents = () => events.slice().sort((next, last) => Date.parse(next.date) - Date.parse(last.date))
-const parsedEvents = useEvents()
-console.log(parsedEvents)
 
 // Dispatches a custom event notifying the eventHub anytime the Event List changes:
 const eventListStateChange = () => {

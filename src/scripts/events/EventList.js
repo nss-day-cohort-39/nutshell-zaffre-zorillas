@@ -1,7 +1,7 @@
 // Module Purpose: Render a list of the logged in user's upcoming events
 // Author: Crystal Elsey
 
-import { useEvents, deleteEvent } from "./EventProvider.js"
+import { useEvents, deleteEvent, getEvents } from "./EventProvider.js"
 import { Event } from "./Event.js"
 
 const contentTarget = document.querySelector(".eventsContainer")
@@ -19,7 +19,7 @@ const renderEvents = (allEvents) => {
         <div><button id="newEventBtn">New Event</button></div>
         <div class="events__list">
             ${eventsForThisUser.map(eachEvent => {
-                return Event(eachEvent)
+                return Event(eachEvent, eventsForThisUser)
             }).join("")} 
         </div>`
 }
