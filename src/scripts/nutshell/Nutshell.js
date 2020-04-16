@@ -6,12 +6,9 @@ import { WelcomeMessage } from "./WelcomeMessage.js"
 import { RegistrationForm } from "./RegistrationForm.js"
 import { SignInForm } from "./SignInForm.js"
 
-
 const eventHub = document.querySelector(".container")
 
-
-
-    WelcomeMessage()
+WelcomeMessage()
 
 const contentTarget = document.querySelector(".nutshellContainer")
 

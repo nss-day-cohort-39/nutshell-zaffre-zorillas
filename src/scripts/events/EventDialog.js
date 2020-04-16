@@ -39,10 +39,11 @@ contentTarget.addEventListener("click", clickEvent => {
         const eventName = document.querySelector("#event--name").value 
         const eventLocation = document.querySelector("#event--location").value 
         const newEvent = {
-                date: eventDate.toLocaleDateString('en-US'),
+                date: eventDate,
                 name: eventName,
                 location: eventLocation
             }
         saveEvent(newEvent)
+        eventDialog.close()
     }
 })
