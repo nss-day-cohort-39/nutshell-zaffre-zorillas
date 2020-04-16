@@ -32,6 +32,7 @@ contentTarget.addEventListener("click", event => {
         document.querySelector("#synopsis").value = ""
         const url = document.querySelector("#url").value
         document.querySelector("#url").value = ""
+        // const userId = sessionStorage.getItem("userId")
         const articleDialog = document.querySelector("#article")
         document.querySelector("#article").value = ""
         const newArticle = articleFactory(title, synopsis, url, userId)
