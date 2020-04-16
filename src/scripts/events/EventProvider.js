@@ -27,3 +27,15 @@ export const deleteEvent = (eventID) => {
     .then(getEvents)
     .then(eventListStateChange)
 }
+
+export const saveEvent = (event) => {
+    return fetch("http://localhost:3000/events", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(event)
+    })
+    .then(getEvents)
+    .then(eventListStateChange)
+}
