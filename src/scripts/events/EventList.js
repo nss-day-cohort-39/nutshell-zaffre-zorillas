@@ -1,7 +1,7 @@
 // Module Purpose: Render a list of the logged in user's upcoming events
 // Author: Crystal Elsey
 
-import { useEvents, deleteEvent } from "./EventProvider.js"
+import { useEvents, deleteEvent, getEvents } from "./EventProvider.js"
 import { Event } from "./Event.js"
 
 const contentTarget = document.querySelector(".eventsContainer")
@@ -9,15 +9,17 @@ const eventHub = document.querySelector(".container")
 
 // Renders HTML for "New Event" button & list of the logged in user's events
 const renderEvents = (allEvents) => {
-    let activeUser = parseInt(sessionStorage.getItem("user"))
+    const activeUser = parseInt(sessionStorage.getItem("user"))
+    // Filters through all events to find events associated with logged in user
     const eventsForThisUser = allEvents.filter(event => {
         return activeUser === event.userId
     })
+    // Maps through array of user's events and converts them to HTML string for the DOM
     contentTarget.innerHTML = `
         <div><button id="newEventBtn">New Event</button></div>
         <div class="events__list">
             ${eventsForThisUser.map(eachEvent => {
-                return Event(eachEvent)
+                return Event(eachEvent, eventsForThisUser)
             }).join("")} 
         </div>`
 }

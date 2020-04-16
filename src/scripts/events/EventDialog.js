@@ -3,15 +3,16 @@
 
 import { saveEvent } from "../events/EventProvider.js"
 
-
 const contentTarget = document.querySelector(".dialogsContainer")
 const eventHub = document.querySelector(".container")
 
+// Listens for the custom event "NewEventBtnClicked" from EventList and opens dialog box
 eventHub.addEventListener("newEventBtnClicked", customEvent => {
     const eventDialog = document.querySelector("#event__dialog")
     eventDialog.showModal()
 })
 
+// Renders HTML for the new event form inside the dialog box
 export const EventDialog = () => {
     contentTarget.innerHTML += `
         <dialog id="event__dialog">
@@ -32,11 +33,7 @@ export const EventDialog = () => {
     `
 }
 
-const dispatchDialogClosedEvent = () => {
-    const dialogClosedEvent = new CustomEvent("dialogClosed")
-    eventHub.dispatchEvent(dialogClosedEvent)
-}
-
+// Listens for "save" click event and captures data from input fields in event dialog box
 contentTarget.addEventListener("click", clickEvent => {
     const eventDialog = document.querySelector("#event__dialog")
     if (clickEvent.target.id === "saveEventBtn") {
@@ -46,14 +43,14 @@ contentTarget.addEventListener("click", clickEvent => {
         const newEvent = {
                 date: eventDate,
                 name: eventName,
-                location: eventLocation
+                location: eventLocation,
+                userId: parseInt(sessionStorage.getItem("user"))
             }
-        if (name !== "" && location !== "") {
+        if (newEvent.name !== "" && newEvent.location !== "" && newEvent.date !== "") {
             saveEvent(newEvent)
         } else {
             alert("Please complete all fields before saving.")
         }
         eventDialog.close()
-        dispatchDialogClosedEvent()
     }  
 })
