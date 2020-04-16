@@ -9,7 +9,7 @@ const eventHub = document.querySelector(".container")
 
 // Renders HTML for "New Event" button & list of the logged in user's events
 const renderEvents = (allEvents) => {
-    const activeUser = parseInt(sessionStorage.getItem("user"))
+    let activeUser = parseInt(sessionStorage.getItem("user"))
     const eventsForThisUser = allEvents.filter(event => {
         return activeUser === event.userId
     })

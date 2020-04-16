@@ -35,7 +35,7 @@ contentTarget.addEventListener("click", event => {
         // const userId = sessionStorage.getItem("userId")
         const articleDialog = document.querySelector("#article")
         document.querySelector("#article").value = ""
-        const newArticle = articleFactory(title, synopsis, url, userId)
+        const newArticle = articleFactory(title, synopsis, url)
         
         //makes article fields required or user gets an alert
         if (title !== "" && synopsis !== "" && url !== "") {

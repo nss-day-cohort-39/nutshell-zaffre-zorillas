@@ -16,8 +16,7 @@ getUsers()
     .then(getEvents)
     .then(EventList)
     .then(EventDialog)
-
-getArticles()
+    .then(getArticles)
     .then(ArticleDialog)
     .then(ArticleList)
 }
