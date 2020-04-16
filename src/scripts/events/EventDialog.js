@@ -32,10 +32,7 @@ export const EventDialog = () => {
     `
 }
 
-const dispatchDialogClosedEvent = () => {
-    const dialogClosedEvent = new CustomEvent("dialogClosed")
-    eventHub.dispatchEvent(dialogClosedEvent)
-}
+
 
 contentTarget.addEventListener("click", clickEvent => {
     const eventDialog = document.querySelector("#event__dialog")
@@ -46,14 +43,14 @@ contentTarget.addEventListener("click", clickEvent => {
         const newEvent = {
                 date: eventDate,
                 name: eventName,
-                location: eventLocation
+                location: eventLocation,
+                userId: parseInt(sessionStorage.getItem('user'))
             }
-        if (name !== "" && location !== "") {
+        if (newEvent.name !== "" && newEvent.location !== "" && newEvent.date !== "") {
             saveEvent(newEvent)
         } else {
             alert("Please complete all fields before saving.")
         }
         eventDialog.close()
-        dispatchDialogClosedEvent()
     }  
 })

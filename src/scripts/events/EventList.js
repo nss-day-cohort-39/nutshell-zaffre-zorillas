@@ -8,16 +8,17 @@ const contentTarget = document.querySelector(".eventsContainer")
 const eventHub = document.querySelector(".container")
 
 // Renders HTML for "New Event" button & list of the logged in user's events
-const renderEvents = (allEvents) => {
+const renderEvents = () => {
     let activeUser = parseInt(sessionStorage.getItem("user"))
-    const eventsForThisUser = allEvents.filter(event => {
+    const eventsArray = useEvents()
+    const eventsForThisUser = eventsArray.filter(event => {
         return activeUser === event.userId
     })
     contentTarget.innerHTML = `
         <div><button id="newEventBtn">New Event</button></div>
         <div class="events__list">
             ${eventsForThisUser.map(eachEvent => {
-                return Event(eachEvent)
+                return Event(eachEvent, eventsForThisUser)
             }).join("")} 
         </div>`
 }

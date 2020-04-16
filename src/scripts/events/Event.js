@@ -3,9 +3,9 @@
 
 import { useEvents } from "./EventProvider.js"
 
-export const Event = (event) => {
-    const events = useEvents()
-    if (event === events[0]) {
+export const Event = (event, filteredEvents) => {
+
+    if (event === filteredEvents[0]) {
     return `
         <div class="nextEvent">
             <h3>Upcoming Event: ${event.name}</h3>
