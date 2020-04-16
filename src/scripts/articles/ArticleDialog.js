@@ -37,7 +37,13 @@ contentTarget.addEventListener("click", event => {
         document.querySelector("#article").value = ""
         const newArticle = articleFactory(title, synopsis, url, userId)
         
-        saveArticle(newArticle)
+        if (title !== "" && synopsis !== "" && url !== "") {
+            saveArticle(newArticle)
+        } else {
+            alert("Opps, it looks like you forgot to fill out all of the required fields.")
+        }
+
+        
         //Method that closes form dialog
         articleDialog.close()
     }
