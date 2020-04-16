@@ -1,6 +1,11 @@
-import { saveUser } from "../users/UserProvider.js"
+//Module purpose: render the registration form and handle the information | author(s): Derek Buckley Sarah Landolt
+
+import { saveUser, useUsers, getUsers } from "../users/UserProvider.js"
 
 const contentTarget = document.querySelector(".nutshellContainer")
+const eventHub = document.querySelector(".container")
+getUsers()
+
 export const RegistrationForm = () => {
     return `
         <fieldset>
@@ -38,17 +43,34 @@ contentTarget.addEventListener("click", clickEvent => {
         }
 
         if (username !== "" && email !== "" && password !== "" && password === confirmPassword){
-            
-            saveUser(newUser)
+
+            const allUsers= useUsers()
+            if (allUsers.find((user)=>user.email ===email)){
+                        alert("This email is already registered")
+                    }
+                    else {
+                        saveUser(newUser).then(
+                            theUserThatWasJustCreated => {
+                                sessionStorage.setItem('user', theUserThatWasJustCreated.id)
+
+                                // Dispatch a custom event that a user successfully registered
+                                const userRegistered = new CustomEvent("userRegistered", {
+                                    detail: {
+                                        id: theUserThatWasJustCreated.id,
+                                        username: username,
+                                        email: email,
+                                        password: password
+                                    }
+                                })
+                                eventHub.dispatchEvent(userRegistered)
+                            }
+                        )
+                    }
+
         }
         else {
             alert("One or more fields was completed incorrectly. Confirm that all fields are completed correctly and passwords match.");
 
         }
-
-        // Make a new object representation of a user
-
-        // Change API state and application state
-        
     }
 })

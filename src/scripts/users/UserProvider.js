@@ -1,3 +1,5 @@
+//Module purpose: To handle fetching user data and posting user data to API | Author(s): Derek Buckley Sarah Landolt
+
 let users = []
 
 export const useUsers = () => {
@@ -5,13 +7,13 @@ export const useUsers = () => {
 }
 
 export const getUsers = () => {
-    return fetch("http://localhost:3000/users")
+    return fetch('http://localhost:3000/users')
       .then(response => response.json())
       .then(parsedUsers => {
         users = parsedUsers;
       })
   }
-  
+
   export const saveUser = user => {
     return fetch('http://localhost:3000/users', {
     method: "POST",
@@ -20,5 +22,6 @@ export const getUsers = () => {
     },
     body: JSON.stringify(user)
 })
+.then(response => response.json())
 
 }
