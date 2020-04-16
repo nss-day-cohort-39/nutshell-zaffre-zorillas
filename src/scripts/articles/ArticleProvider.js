@@ -14,8 +14,7 @@ const dispatchStateChangeEvent = () => {
 //Returns a copy of the article objects that are sorted in decending order by date
 export const useArticles = () => {
     const sortedByDateDecendingOrder = articles.sort(
-        (newerArticle, olderArticle) =>
-            Date.parse(newerArticle.date) - Date.parse(olderArticle.date)
+        (newerArticle, olderArticle) => olderArticle.date - newerArticle.date 
     )
     return sortedByDateDecendingOrder.slice()
 }
