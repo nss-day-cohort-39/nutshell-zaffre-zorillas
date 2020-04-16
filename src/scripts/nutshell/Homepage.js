@@ -7,6 +7,7 @@ import { EventList } from "../events/EventList.js"
 import { ArticleList } from "../articles/ArticleList.js"
 import { getArticles } from "../articles/ArticleProvider.js"
 import { ArticleDialog } from "../articles/ArticleDialog.js"
+import { EventDialog } from "../events/EventDialog.js"
 
 
 export const renderHomepage = () => {
@@ -14,6 +15,7 @@ getUsers()
     .then(useUsers)
     .then(getEvents)
     .then(EventList)
+    .then(EventDialog)
 
 getArticles()
     .then(ArticleDialog)
