@@ -22,16 +22,11 @@ export const SignInForm = () => {
 }
 
 contentTarget.addEventListener("click", clickEvent => {
-    // Make sure it was one of the itinerary buttons
     if (clickEvent.target.id === "userSignInButton") {
 
         const username = document.querySelector("#username").value
         const password = document.querySelector("#password").value
-        /*
-            Create a new custom event, with a good name, and
-            add a property to the `detail` object that specifies
-            which itinerary was chosen
-        */
+        
        
        const userArray = useUsers()
        const activeUser = userArray.find((user)=>user.username ===username)

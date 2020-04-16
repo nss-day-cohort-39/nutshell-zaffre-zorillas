@@ -17,14 +17,9 @@ export const WelcomeMessage = () => {
 
 contentTarget.addEventListener("click", clickEvent => {
 
-    // Make sure it was one of the itinerary buttons
     if (clickEvent.target.id === "registerButton") {
          const clickedButton = clickEvent.target.id
-        /*
-            Create a new custom event, with a good name, and
-            add a property to the `detail` object that specifies
-            which itinerary was chosen
-        */
+   
         const registerButtonClicked = new CustomEvent("registerButtonClicked", {
             detail: {
                 buttonClicked: clickedButton
@@ -36,14 +31,9 @@ contentTarget.addEventListener("click", clickEvent => {
 })
 contentTarget.addEventListener("click", clickEvent => {
 
-    // Make sure it was one of the itinerary buttons
     if (clickEvent.target.id === "signInButton") {
          const clickedButton = clickEvent.target.id
-        /*
-            Create a new custom event, with a good name, and
-            add a property to the `detail` object that specifies
-            which itinerary was chosen
-        */
+       
         const signInButtonClicked = new CustomEvent("signInButtonClicked", {
             detail: {
                 buttonClicked: clickedButton

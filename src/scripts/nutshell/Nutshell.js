@@ -5,8 +5,6 @@ import { WelcomeMessage } from "./WelcomeMessage.js"
 import { RegistrationForm } from "./RegistrationForm.js"
 import { SignInForm } from "./SignInForm.js"
 import { renderHomepage } from "./Homepage.js"
-import { useUsers, getUsers } from "../users/UserProvider.js"
-
 
 
 const contentTarget = document.querySelector(".nutshellContainer")
