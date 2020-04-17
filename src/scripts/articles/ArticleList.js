@@ -23,7 +23,7 @@ contentTarget.addEventListener("click", event => {
 const renderArticles = articlesToRender => {
     let activeUser = parseInt(sessionStorage.getItem("user"))
     const articlesForThisUser = articlesToRender.filter(article => {
-        return activeUser = article.userId 
+        return activeUser === article.userId 
     })
     contentTarget.innerHTML = ` 
         <div><button id="newArticleButton">New Article</button></div>
