@@ -1,4 +1,4 @@
-import { Task } from "./Task.js"
+import { Task, completedTask } from "./Task.js"
 import { deleteTask, useTasks } from "./TaskProvider.js"
 
 //Module Purpose: Having tasks display on the DOM
@@ -7,7 +7,7 @@ import { deleteTask, useTasks } from "./TaskProvider.js"
 const contentTarget = document.querySelector(".tasksContainer")
 const eventHub = document.querySelector(".container")
 
-//Defining a custom event that will let ArticleDialog.js know that the article button was clicked
+//Defining a custom event that will let TaskDialog.js know that the task button was clicked
 const dispatchTaskButtonClicked = () => {
     const taskButtonClicked = new CustomEvent("newTaskClicked")
     eventHub.dispatchEvent(taskButtonClicked)
@@ -18,6 +18,7 @@ contentTarget.addEventListener("click", event => {
         dispatchTaskButtonClicked()
     }
 })
+
 
 //Display an array of task objects on the DOM
 const renderTasks = tasksToRender => {
@@ -44,12 +45,12 @@ contentTarget.addEventListener("click", clickEvent => {
     }
 })
 
-//Eventlistener for event that comes from TaskProvider.js and lets this module know that the task state changed
-eventHub.addEventListener("taskStateChanged", Event => {
+// Re-renders the Task List anytime the state of the Task List is changed:
+eventHub.addEventListener("taskListStateChanged", customEvent => {
     TaskList()
 })
 
-//Gets the articles and uses renderTasks to display on DOM
+//Gets the tasks and uses renderTasks to display on DOM
 export const TaskList = () => {
     const allTasks = useTasks()
     renderTasks(allTasks)

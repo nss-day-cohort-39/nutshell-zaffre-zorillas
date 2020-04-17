@@ -5,10 +5,10 @@ let tasks = []
 
 const eventHub = document.querySelector(".container")
 
-//Defining a custom event that will let TaskList.js know that the task state changed
-const dispatchStateChangeEvent = () => {
-    const articleStateChangedEvent = new CustomEvent("articleStateChanged")
-    eventHub.dispatchEvent(articleStateChangedEvent)
+// Dispatches a custom event notifying the eventHub anytime the Task List changes:
+const taskListStateChange = () => {
+    const taskStateChangeEvent = new CustomEvent("taskListStateChanged")
+    eventHub.dispatchEvent(taskStateChangeEvent)
 }
 
 //Returns a copy of the task objects that are sorted in decending order by date
@@ -30,7 +30,7 @@ export const deleteTask = taskId => {
         method: "DELETE"
     })
         .then(getTasks)
-        .then(dispatchStateChangeEvent)
+        .then(taskListStateChange)
 }
 
 //Will allow user to save a task then update that state has changed
@@ -44,5 +44,5 @@ export const saveTask = task => {
         
     })
     .then(getTasks)
-    .then(dispatchStateChangeEvent)
+    .then(taskListStateChange)
 }

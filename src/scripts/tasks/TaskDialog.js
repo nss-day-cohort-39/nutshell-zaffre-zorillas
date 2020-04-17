@@ -9,48 +9,44 @@ const eventHub = document.querySelector(".container")
 
 //Event listener that is listening for the custom event that was defined in TaskList.js
 eventHub.addEventListener("newTaskClicked", customEvent => {
-    const taskDialog = document.querySelector("#task")
+    const taskDialog = document.querySelector("#task__dialog")
     taskDialog.showModal()
 })
 
-//Defining a click event for the save task and task will save to the database 
-contentTarget.addEventListener("click", event => {
-    if(event.target.id === "saveTask") {
-        const name = document.querySelector("#taskName").value
-        document.querySelector("#taskName").value = ""
-        const synopsis = document.querySelector("#synopsis").value
-        document.querySelector("#synopsis").value = ""
-        const url = document.querySelector("#url").value
-        document.querySelector("#url").value = ""
-        const userId = 1 //Currently hard coded
-        const taskDialog = document.querySelector("#task")
-        document.querySelector("#article").value = ""
+// Listens for "save" click event and captures data from input fields in task dialog box
+contentTarget.addEventListener("click", clickEvent => {
+    const taskDialog = document.querySelector("#task__dialog")
+    if (clickEvent.target.id === "saveTaskBtn") {
+        const taskName = document.querySelector("#task--name").value 
+        const expectedCompletionDate = document.querySelector("#task--expectedDate").value 
         const newTask = {
-            name: name,
-            userId: parseInt(sessionStorage.getItem('user'))
-        }   
-        //makes article fields required or user gets an alert
-        if (name !== "") {
+                name: taskName,
+                date: expectedCompletionDate,
+                userId: parseInt(sessionStorage.getItem("user"))
+            }
+        if (newTask.name !== "" && newTask.date !== "") {
             saveTask(newTask)
         } else {
-            alert("Opps, it looks like you forgot to fill out all of the required fields.")
+            alert("Please complete all fields before saving.")
         }
-
-        //Method that closes form dialog
         taskDialog.close()
-    }
+    }  
 })
 
 //HTML representation of a form that is nested in a dialog
 export const TaskDialog = () => {
     contentTarget.innerHTML += `
-        <dialog id="task">
-            <fieldset>
-                <label class="label--name" for="name">Task Name: </label>
-                <input type="text" id="taskName"/>
-            </fieldset>
-            <button id="saveTask">Save Task</button>
-        </dialog>
-    `
+    <dialog id="task__dialog">
+        <fieldset>
+            <label for="task--name">Name:</label>
+            <input id="task--name" name="task--name" type="text"/>
+        </fieldset>
+        <fieldset>
+            <label for="task--expectedDate">Expected Completion Date:</label>
+            <input id="task--expectedDate" name="task--expectedDate" type="date"/>                
+        </fieldset>
+        <button id="saveTaskBtn">Save Task</button>
+    </dialog>
+`
 }
 
