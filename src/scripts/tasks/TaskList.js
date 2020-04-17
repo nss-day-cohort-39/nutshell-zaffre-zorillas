@@ -1,4 +1,4 @@
-import { Task, completedTask } from "./Task.js"
+import { Task } from "./Task.js"
 import { deleteTask, useTasks } from "./TaskProvider.js"
 
 //Module Purpose: Having tasks display on the DOM
