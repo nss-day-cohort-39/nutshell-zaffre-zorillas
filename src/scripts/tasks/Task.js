@@ -1,5 +1,6 @@
 //Module Purpose: HTML representation of a single Task with a delete button     
 //Author: Sarah Hart Landolt
+
 const contentTarget = document.querySelector(".tasksContainer")
 const eventHub = document.querySelector(".container")
 

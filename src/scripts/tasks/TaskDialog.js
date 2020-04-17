@@ -1,7 +1,7 @@
-import { saveTask } from "./TaskProvider.js"
-
 //Module Purpose: Rendering HTML representations of Task Dialog
 //Author: Sarah Hart Landolt
+
+import { saveTask } from "./TaskProvider.js"
 
 
 const contentTarget = document.querySelector(".dialogsContainer")

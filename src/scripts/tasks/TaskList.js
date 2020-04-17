@@ -1,8 +1,8 @@
-import { Task } from "./Task.js"
-import { deleteTask, useTasks } from "./TaskProvider.js"
-
 //Module Purpose: Having tasks display on the DOM
 //Author: Sarah Hart Landolt 
+
+import { Task } from "./Task.js"
+import { deleteTask, useTasks } from "./TaskProvider.js"
 
 const contentTarget = document.querySelector(".tasksContainer")
 const eventHub = document.querySelector(".container")
@@ -22,9 +22,9 @@ contentTarget.addEventListener("click", event => {
 
 //Display an array of task objects on the DOM
 const renderTasks = tasksToRender => {
-    let activeUser = parseInt(sessionStorage.getItem("user"))
+    const activeUser = parseInt(sessionStorage.getItem("user"))
     const tasksForThisUser = tasksToRender.filter(task => {
-        return activeUser = task.userId 
+        return activeUser === task.userId 
     })
     contentTarget.innerHTML = ` 
         <div><button id="newTaskButton">New Task</button></div>
