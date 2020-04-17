@@ -12,19 +12,16 @@ import { getTasks } from "../tasks/TaskProvider.js"
 import { TaskList } from "../tasks/TaskList.js"
 import { TaskDialog } from "../tasks/TaskDialog.js"
 
-
 export const renderHomepage = () => {
-getUsers()
-    .then(useUsers)
-    .then(getEvents)
-    .then(EventList)
-    .then(EventDialog)
-
-getArticles()
-    .then(ArticleDialog)
-    .then(ArticleList)
-
-getTasks()
-    .then(TaskList)
-    .then(TaskDialog)
-}
+    getUsers()
+        .then(useUsers)
+        .then(getEvents)
+        .then(EventList)
+        .then(EventDialog)
+        .then(getArticles)
+        .then(ArticleDialog)
+        .then(ArticleList)
+        .then(getTasks)
+        .then(TaskList)
+        .then(TaskDialog)
+    }
